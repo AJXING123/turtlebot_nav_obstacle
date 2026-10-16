@@ -2,13 +2,13 @@
 
 基于 ROS 2 Humble + TurtleBot3 Burger + Nav2 + Gazebo Classic 的自主导航项目。机器人在含**未建图静态障碍物**的房间地图中，按 P1 → P2 → P3 → P4 顺序完成多点导航，全程无人工干预。
 
-详细技术报告见 [docs/TurtleBot3_Nav2_Project_Report.md](docs/TurtleBot3_Nav2_Project_Report.md)（[HTML 版](docs/TurtleBot3_Nav2_Project_Report.html)）。
+详细技术报告见 [项目技术报告](docs/TurtleBot3_Nav2_Project_Report.md)（另有 [HTML 版](docs/TurtleBot3_Nav2_Project_Report.html)，在 GitHub 上显示为源码，克隆后用浏览器打开可正常阅读）。
 
 ## 项目特点
 
 - **一键启动**：`scripts/start_nav.sh` 自动完成 Gazebo → Nav2+RViz → AMCL 初始位姿 → lifecycle Active 确认 → 多点导航全流程，带就绪检测与超时保护
 - **绕障导航**：障碍箱（中心 (-1.92, 0.15)，0.8m × 0.3m × 0.5m）不在静态地图中，靠激光雷达实时感知绕行
-- **局部控制器**：采用 Regulated Pure Pursuit (RPP)，解决了 DWB 在贴障碍场景下的"零线速度 + 微幅角速度振荡"问题
+- **局部控制器**：采用 Regulated Pure Pursuit (RPP)，解决了 DWB 在贴障碍场景下的「零线速度 + 微幅角速度振荡」问题
 - **失败重试**：每个目标点失败自动清空 costmap 重试（最多 3 次）
 
 ## 环境依赖
